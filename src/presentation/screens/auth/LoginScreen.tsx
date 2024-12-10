@@ -2,8 +2,13 @@ import React from 'react';
 import {Button, Input, Layout, Text} from '@ui-kitten/components';
 import {ScrollView} from 'react-native-gesture-handler';
 import {StyleSheet, useColorScheme, useWindowDimensions} from 'react-native';
+import CustomIcon from '@/presentation/components/ui/CustomIcon';
+import {StackScreenProps} from '@react-navigation/stack';
+import {RootStackParams} from '@/presentation/navigator/StackNavigator';
 
-export default function LoginScreen() {
+interface Props extends StackScreenProps<RootStackParams, 'LoginScreen'> {}
+
+export default function LoginScreen({navigation}: Props) {
   const {height} = useWindowDimensions();
   const colorScheme = useColorScheme();
 
@@ -21,6 +26,7 @@ export default function LoginScreen() {
             keyboardType="email-address"
             autoCapitalize="none"
             style={{marginBottom: 10}}
+            accessoryLeft={<CustomIcon name="email-outline" />}
           />
 
           <Input
@@ -29,20 +35,26 @@ export default function LoginScreen() {
             autoCapitalize="none"
             secureTextEntry
             style={{marginBottom: 10}}
+            accessoryLeft={<CustomIcon name="lock-outline" />}
           />
         </Layout>
 
         <Layout style={{height: 20}} />
 
         <Layout style={{marginBottom: 20}}>
-          <Button onPress={() => {}} appearance="">
+          <Button
+            onPress={() => {}}
+            accessoryRight={<CustomIcon name="arrow-forward-outline" white />}>
             Login
           </Button>
         </Layout>
 
         <Layout style={[styles.createAccount]}>
           <Text>Don't you have an account?</Text>
-          <Text category="s1" status="primary" onPress={() => {}}>
+          <Text
+            category="s1"
+            status="primary"
+            onPress={() => navigation.navigate('RegisterScreen')}>
             Create one!
           </Text>
         </Layout>

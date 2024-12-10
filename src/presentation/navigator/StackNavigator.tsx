@@ -5,6 +5,8 @@ import HomeScreen from '../screens/home/HomeScreen';
 import LoginScreen from '../screens/auth/LoginScreen';
 import RegisterScreen from '../screens/auth/RegisterScreen';
 import ProductScreen from '../screens/product/ProductScreen';
+import {StackCardStyleInterpolator} from 'node_modules/@react-navigation/stack/lib/typescript/commonjs/src';
+import LoadingScreen from '../screens/loading/LoadingScreen';
 
 export type RootStackParams = {
   HomeScreen: undefined;
@@ -16,20 +18,35 @@ export type RootStackParams = {
 
 const Stack = createStackNavigator<RootStackParams>();
 
+const fadeAnimation: StackCardStyleInterpolator = ({current}) => {
+  return {
+    cardStyle: {
+      opacity: current.progress,
+    },
+  };
+};
+
 type ScreenConfig = {
   name: keyof RootStackParams;
   component: React.ComponentType<any>;
+  hasAnimation?: boolean;
 };
 
 const screens: ScreenConfig[] = [
-  {name: 'LoginScreen', component: LoginScreen},
-  {name: 'HomeScreen', component: HomeScreen},
-  {name: 'RegisterScreen', component: RegisterScreen},
+  {name: 'LoadingScreen', component: LoadingScreen, hasAnimation: true},
+  {name: 'LoginScreen', component: LoginScreen, hasAnimation: true},
+  {name: 'RegisterScreen', component: RegisterScreen, hasAnimation: true},
+  {name: 'HomeScreen', component: HomeScreen, hasAnimation: true},
   {name: 'ProductScreen', component: ProductScreen},
 ];
 
-const renderScreens = screens.map(({name, component}) => (
-  <Stack.Screen key={name} name={name} component={component} />
+const renderScreens = screens.map(({name, component, hasAnimation}) => (
+  <Stack.Screen
+    key={name}
+    name={name}
+    component={component}
+    options={{cardStyleInterpolator: hasAnimation ? fadeAnimation : undefined}}
+  />
 ));
 
 export default function StackNavigator() {
@@ -38,6 +55,9 @@ export default function StackNavigator() {
       initialRouteName="LoginScreen"
       screenOptions={{
         headerShown: false,
+
+        // Apply for global application
+        // cardStyleInterpolator: fadeAnimation,
       }}>
       {renderScreens}
     </Stack.Navigator>
