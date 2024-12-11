@@ -1,12 +1,7 @@
 import React, {useState} from 'react';
 import {Button, Card, Input, Layout, Modal, Text} from '@ui-kitten/components';
 import {ScrollView} from 'react-native-gesture-handler';
-import {
-  Alert,
-  StyleSheet,
-  useColorScheme,
-  useWindowDimensions,
-} from 'react-native';
+import {StyleSheet, useColorScheme, useWindowDimensions} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 
 import CustomIcon from '@app/presentation/components/ui/CustomIcon';

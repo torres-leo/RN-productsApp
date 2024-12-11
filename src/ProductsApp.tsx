@@ -7,6 +7,7 @@ import * as eva from '@eva-design/eva';
 import './gesture-handler';
 
 import StackNavigator from './presentation/navigator/StackNavigator';
+import AuthProvider from './presentation/providers/AuthProvider';
 
 export default function ProductsApp() {
   const colorScheme = useColorScheme();
@@ -33,7 +34,9 @@ export default function ProductsApp() {
               notification: theme['color-primary-500'],
             },
           }}>
-          <StackNavigator />
+          <AuthProvider>
+            <StackNavigator />
+          </AuthProvider>
         </NavigationContainer>
       </ApplicationProvider>
     </>
