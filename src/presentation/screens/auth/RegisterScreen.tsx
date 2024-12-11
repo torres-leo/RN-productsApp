@@ -1,10 +1,11 @@
 import React from 'react';
 import {Button, Input, Layout, Text} from '@ui-kitten/components';
 import {ScrollView} from 'react-native-gesture-handler';
-import {StyleSheet, useColorScheme, useWindowDimensions} from 'react-native';
-import CustomIcon from '@/presentation/components/ui/CustomIcon';
 import {StackScreenProps} from '@react-navigation/stack';
-import {RootStackParams} from '@/presentation/navigator/StackNavigator';
+import {StyleSheet, useColorScheme, useWindowDimensions} from 'react-native';
+
+import CustomIcon from '@app/presentation/components/ui/CustomIcon';
+import {RootStackParams} from '@app/presentation/navigator/StackNavigator';
 
 interface Props extends StackScreenProps<RootStackParams, 'RegisterScreen'> {}
 

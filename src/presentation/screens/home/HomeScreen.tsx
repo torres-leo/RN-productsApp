@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Icon, Layout, Text} from '@ui-kitten/components';
-import {globalStyles} from '@/config/theme/global-styles';
+import {globalStyles} from '@app/config/theme/global-styles';
 
 export default function HomeScreen() {
   const handleLogout = () => {
