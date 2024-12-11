@@ -1,4 +1,3 @@
-import {View, Text} from 'react-native';
 import React, {PropsWithChildren, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
