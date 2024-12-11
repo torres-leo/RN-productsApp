@@ -1,11 +1,14 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  StackCardStyleInterpolator,
+} from '@react-navigation/stack';
 
 import HomeScreen from '../screens/home/HomeScreen';
 import LoginScreen from '../screens/auth/LoginScreen';
 import RegisterScreen from '../screens/auth/RegisterScreen';
 import ProductScreen from '../screens/product/ProductScreen';
-import {StackCardStyleInterpolator} from 'node_modules/@react-navigation/stack/lib/typescript/commonjs/src';
+
 import LoadingScreen from '../screens/loading/LoadingScreen';
 
 export type RootStackParams = {

@@ -7,10 +7,11 @@ module.exports = {
         cwd: 'babelrc',
         extensions: ['.ts', '.tsx', '.js', '.ios.js', '.android.js'],
         alias: {
-          '@': './src',
+          '@app': './src',
         },
       },
     ],
     'jest-hoist',
+    ['module:react-native-dotenv'],
   ],
 };
