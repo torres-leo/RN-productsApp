@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleProp, StyleSheet, ViewStyle} from 'react-native';
 import React from 'react';
 import {Icon, useTheme} from '@ui-kitten/components';
 
@@ -6,9 +6,10 @@ interface Props {
   name: string;
   color?: string;
   white?: boolean;
+  style?: StyleProp<ViewStyle>;
 }
 
-export default function CustomIcon({color, name, white = false}: Props) {
+export default function CustomIcon({color, name, white = false, style}: Props) {
   const theme = useTheme();
 
   if (white) {
@@ -19,7 +20,7 @@ export default function CustomIcon({color, name, white = false}: Props) {
     color = theme[color] ?? theme['text-basic-color'];
   }
 
-  return <Icon name={name} fill={color} style={styles.icon} />;
+  return <Icon name={name} fill={color} style={[styles.icon, style]} />;
 }
 
 const styles = StyleSheet.create({

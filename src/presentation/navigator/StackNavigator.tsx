@@ -55,7 +55,7 @@ const renderScreens = screens.map(({name, component, hasAnimation}) => (
 export default function StackNavigator() {
   return (
     <Stack.Navigator
-      initialRouteName="LoginScreen"
+      initialRouteName="LoadingScreen"
       screenOptions={{
         headerShown: false,
 
