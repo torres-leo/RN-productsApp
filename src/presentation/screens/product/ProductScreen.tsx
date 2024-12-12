@@ -1,10 +1,11 @@
-import {View, Text} from 'react-native';
+import {Text} from 'react-native';
 import React from 'react';
+import MainLayout from '@app/presentation/layouts/MainLayout';
 
 export default function ProductScreen() {
   return (
-    <View>
+    <MainLayout title={'Product'}>
       <Text>ProductScreen</Text>
-    </View>
+    </MainLayout>
   );
 }

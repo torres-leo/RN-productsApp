@@ -16,7 +16,7 @@ export type RootStackParams = {
   LoginScreen: undefined;
   RegisterScreen: undefined;
   LoadingScreen: undefined;
-  ProductScreen: {productId: number};
+  ProductScreen: {productId: string};
 };
 
 const Stack = createStackNavigator<RootStackParams>();

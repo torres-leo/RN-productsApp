@@ -1,26 +1,41 @@
 import React from 'react';
-import {Button, Layout, Text} from '@ui-kitten/components';
-import {globalStyles} from '@app/config/theme/global-styles';
-import {useAuthStore} from '@app/presentation/store/auth/useAuthStore';
-import CustomIcon from '@app/presentation/components/ui/CustomIcon';
+import {useInfiniteQuery} from '@tanstack/react-query';
+
+import {getProducts} from '@app/actions/products/get-products';
+import MainLayout from '@app/presentation/layouts/MainLayout';
+import FullScreenLoader from '@app/presentation/components/ui/FullScreenLoader';
+import {ProductList} from '@app/presentation/components/ui/products/ProductList';
 
 export default function HomeScreen() {
-  const {logout} = useAuthStore();
+  // const {isLoading, data: products = []} = useQuery({
+  //   queryKey: ['products', 'infinite'],
+  //   staleTime: 1000 * 60 * 60,
+  //   queryFn: () => getProducts(),
+  // });
+
+  const {isLoading, data, fetchNextPage} = useInfiniteQuery({
+    queryKey: ['products', 'infinite'],
+    staleTime: 1000 * 60 * 60,
+    initialPageParam: 1,
+    queryFn: async params => await getProducts(params.pageParam),
+    getNextPageParam: (lastPage, allPages) => allPages.length,
+  });
 
   return (
-    <Layout style={[globalStyles.containerCenter]}>
-      <Text>HomeScreen</Text>
-
-      <Button
-        accessoryRight={
-          <CustomIcon
-            name="log-out-outline"
-            style={{transform: [{rotateX: '45deg'}]}}
-          />
-        }
-        onPress={logout}>
-        Logout
-      </Button>
-    </Layout>
+    <MainLayout
+      title="Tesloshop - Products"
+      subtitle="Administrative Application"
+      // rightAction={() => {}}
+      // rightActionIcon="plus-outline"
+    >
+      {isLoading ? (
+        <FullScreenLoader />
+      ) : (
+        <ProductList
+          products={data?.pages.flat() ?? []}
+          fetchNextPage={fetchNextPage}
+        />
+      )}
+    </MainLayout>
   );
 }

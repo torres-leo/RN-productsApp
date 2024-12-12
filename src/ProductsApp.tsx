@@ -8,6 +8,9 @@ import './gesture-handler';
 
 import StackNavigator from './presentation/navigator/StackNavigator';
 import AuthProvider from './presentation/providers/AuthProvider';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 export default function ProductsApp() {
   const colorScheme = useColorScheme();
@@ -18,7 +21,7 @@ export default function ProductsApp() {
       : theme['color-basic-100'];
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <IconRegistry icons={EvaIconsPack} />
 
       <ApplicationProvider {...eva} theme={theme}>
@@ -39,6 +42,6 @@ export default function ProductsApp() {
           </AuthProvider>
         </NavigationContainer>
       </ApplicationProvider>
-    </>
+    </QueryClientProvider>
   );
 }
