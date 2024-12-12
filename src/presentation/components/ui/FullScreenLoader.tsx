@@ -2,10 +2,10 @@ import React from 'react';
 import {Layout, Spinner} from '@ui-kitten/components';
 import {StyleSheet} from 'react-native';
 
-export default function LoadingScreen() {
+export default function FullScreenLoader() {
   return (
     <Layout style={[styles.container]}>
-      <Spinner status="primary" size="large" />
+      <Spinner status="primary" size="giant" />
     </Layout>
   );
 }
