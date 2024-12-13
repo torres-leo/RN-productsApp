@@ -17,7 +17,7 @@ interface Props {
   rightAction?: () => void;
   rightActionIcon?: string;
 
-  children: React.ReactNode;
+  children?: React.ReactNode;
   style?: StyleProp<ViewStyle>;
 }
 
@@ -64,7 +64,7 @@ export default function MainLayout({
       />
       <Divider />
 
-      <Layout>{children}</Layout>
+      <Layout style={{height: '100%'}}>{children}</Layout>
     </Layout>
   );
 }
