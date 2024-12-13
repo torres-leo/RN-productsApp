@@ -13,13 +13,12 @@ interface Props {
 export default function ProductCard({product}: Props) {
   const {title, images, id} = product;
   const navigation = useNavigation<NavigationProp<RootStackParams>>();
-  console.log(id);
 
   const renderImage = () => {
     if (images.length === 0) {
       return (
         <Image
-          source={require('@app/assets/no-product-image.png')}
+          source={require('../../../../assets/no-product-image.png')}
           style={[styles.noImage]}
         />
       );
@@ -48,7 +47,7 @@ const styles = StyleSheet.create({
   },
   noImage: {
     width: '100%',
-    height: '100%',
+    height: 200,
   },
   productImage: {
     flex: 1,
