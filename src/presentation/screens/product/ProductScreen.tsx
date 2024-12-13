@@ -6,6 +6,7 @@ import {Button, Input, Layout} from '@ui-kitten/components';
 import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
 
 import {ArrayGenders, ArraySizes} from '@app/config/constants/product.constant';
+import {CameraAdapter} from '@app/config/adapters/camera-adapter';
 import {getProductById} from '@app/actions/products/get-product-by-id';
 import {Product} from '@app/domain/entities/product';
 import {RootStackParams} from '@app/presentation/navigator/StackNavigator';
@@ -52,7 +53,15 @@ export default function ProductScreen({navigation, route}: Props) {
       initialValues={product}
       onSubmit={values => mutation.mutate(values)}>
       {({handleChange, handleSubmit, values, setFieldValue}) => (
-        <MainLayout title={values.title} subtitle={`$${values.price}`}>
+        <MainLayout
+          title={values.title}
+          subtitle={`$${values.price}`}
+          rightAction={async () => {
+            // const photos = await CameraAdapter.takePicture();
+            const photos = await CameraAdapter.pickImagesFromGallery();
+            setFieldValue('images', [...values.images, ...photos]);
+          }}
+          rightActionIcon="image-outline">
           <ScrollView style={{flex: 1}}>
             <Layout
               style={{

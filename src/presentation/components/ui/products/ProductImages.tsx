@@ -1,5 +1,5 @@
-import {Image, FlatList} from 'react-native';
 import React from 'react';
+import {Image, FlatList} from 'react-native';
 import {FadeInImage} from '../FadeInImage';
 
 interface Props {

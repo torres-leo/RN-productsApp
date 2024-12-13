@@ -1,13 +1,13 @@
+import React from 'react';
 import {useNavigation} from '@react-navigation/native';
+import {Platform, StyleProp, ViewStyle} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {
   Divider,
   Layout,
   TopNavigation,
   TopNavigationAction,
 } from '@ui-kitten/components';
-import React from 'react';
-import {Platform, StyleProp, ViewStyle} from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import CustomIcon from '../components/ui/CustomIcon';
 
 interface Props {
